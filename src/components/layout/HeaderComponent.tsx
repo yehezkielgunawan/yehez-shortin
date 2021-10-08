@@ -1,6 +1,8 @@
 import { useColorMode } from "@chakra-ui/color-mode";
+import Icon from "@chakra-ui/icon";
 import { Box, Flex, Text } from "@chakra-ui/layout";
 import React from "react";
+import { FaLink } from "react-icons/fa";
 
 import { useDesktopWidthCheck } from "functions/helpers/desktopWidthChecker";
 
@@ -29,7 +31,7 @@ const HeaderComponent = () => {
         px={isDesktopWidth ? 1 : 3}
       >
         <Text as="a" href="/" fontSize="lg">
-          <b>yehez-nextjs-chakra-starter</b>
+          <Icon as={FaLink} /> <b>Shortin</b>
         </Text>
 
         <DarkModeSwitch />
