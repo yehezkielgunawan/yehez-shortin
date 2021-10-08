@@ -4,9 +4,9 @@ const defaultSEOConfig = {
   titleTemplate: "%s",
   defaultTitle: "yehez-shortin",
   description: "Yehezkiel Gunawan's personalized link shortener",
-  canonical: "https://yehez-nextchakra-starter.yehezgun.com",
+  canonical: "https://link.yehezgun.com",
   openGraph: {
-    url: "https://yehez-nextchakra-starter.yehezgun.com",
+    url: "https://link.yehezgun.com",
     title: "yehez-shortin",
     description: "Yehezkiel Gunawan's personalized link shortener.",
     type: "website",

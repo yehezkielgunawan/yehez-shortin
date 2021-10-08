@@ -75,7 +75,8 @@ const Index = () => {
   };
 
   const resetThisForm = () => {
-    return resetForm();
+    setUrlRes("");
+    resetForm();
   };
 
   const isSubmitButtonDisabled =
