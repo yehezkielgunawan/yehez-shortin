@@ -1,5 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 
+import { API_KEY, BASE_URL } from "constants/config";
+
 import { LinkInput, LinkResponse } from "./types";
 
 export const submitUrl = async (
@@ -9,7 +11,7 @@ export const submitUrl = async (
 ) => {
   return await axios
     .post<LinkInput, AxiosResponse<LinkResponse>>(
-      "https://api.tinyurl.com/create",
+      `${BASE_URL}create`,
       {
         url,
         domain,
@@ -17,9 +19,7 @@ export const submitUrl = async (
       },
       {
         headers: {
-          Authorization:
-            "Bearer " +
-            "eLLZlxJXW4g9eLT9i3HBCxky4lQUpr29Z5g4ItfMVcSvvtaK4mzkhVjrWLSl",
+          Authorization: "Bearer " + API_KEY,
         },
       }
     )
