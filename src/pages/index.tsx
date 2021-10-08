@@ -33,6 +33,7 @@ const Index = () => {
     handleChange,
     handleSubmit,
     resetForm,
+    setFieldValue,
   } = useFormik<LinkInput>({
     initialValues: INITIAL_SUBMIT_LINK,
     enableReinitialize: true,
@@ -62,6 +63,12 @@ const Index = () => {
   });
 
   const { url, domain, alias } = values;
+
+  const handleSelectDomain = (
+    selected: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    return setFieldValue("domain", selected.target.value);
+  };
 
   const copyToClipboard = (text: string) => {
     return navigator.clipboard.writeText(text);
@@ -93,8 +100,10 @@ const Index = () => {
       <Flex gridGap={4} align="center">
         <FormControl>
           <FormLabel htmlFor="domain">Select Domain</FormLabel>
-          <Select value={domain} onChange={handleChange}>
+          <Select value={domain} onChange={handleSelectDomain}>
             <option value="tiny.one">tiny.one</option>
+            <option value="tinyurl.com">tinyurl.com</option>
+            <option value="yehez.tiny.us">yehez.tiny.us</option>
           </Select>
         </FormControl>
         <FormControl>
