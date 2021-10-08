@@ -1,13 +1,13 @@
 /** @type {import('next-seo').DefaultSeoProps} */
 const defaultSEOConfig = {
-  title: "yehez-shortin",
+  title: "Yehez Shortin",
   titleTemplate: "%s",
-  defaultTitle: "yehez-shortin",
+  defaultTitle: "Yehez Shortin",
   description: "Yehezkiel Gunawan's personalized link shortener",
   canonical: "https://link.yehezgun.com",
   openGraph: {
     url: "https://link.yehezgun.com",
-    title: "yehez-shortin",
+    title: "Yehez Shortin | My personalized link shortener",
     description: "Yehezkiel Gunawan's personalized link shortener.",
     type: "website",
     images: [
