@@ -20,3 +20,9 @@ This is the first project that made using [Yehez Next Chakra Starter](https://ye
 - [Chakra UI](https://chakra-ui.com/) - UI component
 - [Typescript](https://www.typescriptlang.org/) - The programming language
 - [Yehez NextChakra Starter Template](https://yehez-nextchakra-starter.yehezgun.com/) - as my base template
+
+Future Improvement
+
+- [ ] Modularize the related components if needed.
+- [ ] Add Regex validation for the long url input
+- [ ] Use modal dialog as a confirmation and display the link result there.
