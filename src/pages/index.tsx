@@ -17,6 +17,7 @@ import { FaClipboard } from "react-icons/fa";
 
 import { useAppToast } from "components/ui/AppToast";
 import Main from "components/wrapper/Main";
+import { useDesktopWidthCheck } from "functions/helpers/desktopWidthChecker";
 import isValidURL from "functions/helpers/isValidURL";
 import { submitUrl } from "functions/lib/fetcher";
 import { LinkContent, LinkInput } from "functions/lib/types";
@@ -25,6 +26,7 @@ import { INITIAL_SUBMIT_LINK } from "types/submitForm";
 const Index = () => {
   const [urlRes, setUrlRes] = useState<string>("");
   const toast = useAppToast();
+  const isDesktopWidth = useDesktopWidthCheck();
   const {
     values,
     errors,
@@ -90,6 +92,15 @@ const Index = () => {
 
   return (
     <Main>
+      <Text
+        bgGradient="linear(to-l, #7928CA, #FF0080)"
+        bgClip="text"
+        fontSize={isDesktopWidth ? "3xl" : "xl"}
+        fontWeight="extrabold"
+        textAlign="center"
+      >
+        The URL is too long? Make it short!
+      </Text>
       <FormControl isRequired>
         <FormLabel htmlFor="url">Long URL</FormLabel>
         <Input
