@@ -17,6 +17,7 @@ import { FaClipboard } from "react-icons/fa";
 
 import { useAppToast } from "components/ui/AppToast";
 import Main from "components/wrapper/Main";
+import isValidURL from "functions/helpers/isValidURL";
 import { submitUrl } from "functions/lib/fetcher";
 import { LinkContent, LinkInput } from "functions/lib/types";
 import { INITIAL_SUBMIT_LINK } from "types/submitForm";
@@ -39,9 +40,14 @@ const Index = () => {
     enableReinitialize: true,
     validate: (formValues) => {
       const error: FormikErrors<LinkInput> = {};
+
       if (formValues.url === "" || !formValues.url) {
         error.url = "Field URL must be filled!";
       }
+      if (!isValidURL(formValues.url) && formValues.url.length > 0) {
+        error.url = "It must be valid URL!";
+      }
+
       return error;
     },
     onSubmit: async (formValues) => {
@@ -113,7 +119,7 @@ const Index = () => {
             value={alias}
             name="alias"
             id="alias"
-            placeholder="alias"
+            placeholder="alias (optional)"
             onChange={handleChange}
             onBlur={handleBlur}
           />
