@@ -1,4 +1,4 @@
-import { Button, IconButton } from "@chakra-ui/button";
+import { Button } from "@chakra-ui/button";
 import { useColorMode } from "@chakra-ui/color-mode";
 import Icon from "@chakra-ui/icon";
 import { Box, Flex, Text } from "@chakra-ui/layout";
@@ -34,26 +34,18 @@ const HeaderComponent = () => {
         <Text as="a" href="/" fontSize="lg">
           <Icon as={FaLink} /> <b>Shortin</b>
         </Text>
-        <Flex gridGap={4}>
-          {isDesktopWidth ? (
-            <Button
-              as="a"
-              target="_blank"
-              href="https://github.com/yehezkielgunawan/yehez-shortin"
-              leftIcon={<FaGithub />}
-              variant="ghost"
-            >
-              Open in Github
-            </Button>
-          ) : (
-            <IconButton
-              as="a"
-              target="_blank"
-              href="https://github.com/yehezkielgunawan/yehez-shortin"
-              aria-label="github-icon"
-              icon={<FaGithub />}
-            />
-          )}
+        <Flex gridGap={3} align="center">
+          <Button
+            as="a"
+            target="_blank"
+            href="https://github.com/yehezkielgunawan/yehez-shortin"
+            leftIcon={<FaGithub />}
+            variant="ghost"
+            size="sm"
+          >
+            Open in Github
+          </Button>
+
           <DarkModeSwitch />
         </Flex>
       </Flex>
