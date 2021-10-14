@@ -1,21 +1,14 @@
-import { Button, IconButton } from "@chakra-ui/button";
+import { Button } from "@chakra-ui/button";
 import { FormControl, FormLabel } from "@chakra-ui/form-control";
 import { Input } from "@chakra-ui/input";
 import { Flex, Text } from "@chakra-ui/layout";
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  PopoverArrow,
-  PopoverHeader,
-} from "@chakra-ui/popover";
 import { Select } from "@chakra-ui/select";
 import { AxiosError } from "axios";
 import { FormikErrors, useFormik } from "formik";
 import React, { useState } from "react";
-import { FaClipboard } from "react-icons/fa";
 
 import { useAppToast } from "components/ui/AppToast";
+import ClipboardPopover from "components/ui/ClipboardPopover";
 import Main from "components/wrapper/Main";
 import { useDesktopWidthCheck } from "functions/helpers/desktopWidthChecker";
 import isValidURL from "functions/helpers/isValidURL";
@@ -76,10 +69,6 @@ const Index = () => {
     selected: React.ChangeEvent<HTMLSelectElement>
   ) => {
     return setFieldValue("domain", selected.target.value);
-  };
-
-  const copyToClipboard = (text: string) => {
-    return navigator.clipboard.writeText(text);
   };
 
   const resetThisForm = () => {
@@ -151,20 +140,7 @@ const Index = () => {
       </Flex>
       {urlRes?.length > 0 && (
         <Text>
-          Your new link: <b>{urlRes}</b>{" "}
-          <Popover trigger="click">
-            <PopoverTrigger>
-              <IconButton
-                aria-label="Clipboard"
-                icon={<FaClipboard />}
-                onClick={() => copyToClipboard(urlRes)}
-              />
-            </PopoverTrigger>
-            <PopoverContent>
-              <PopoverArrow />
-              <PopoverHeader>Copied!</PopoverHeader>
-            </PopoverContent>
-          </Popover>
+          Your new link: <b>{urlRes}</b> <ClipboardPopover urlRes={urlRes} />
         </Text>
       )}
     </Main>
