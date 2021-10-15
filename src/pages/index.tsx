@@ -2,6 +2,7 @@ import { Button } from "@chakra-ui/button";
 import { FormControl, FormLabel } from "@chakra-ui/form-control";
 import { Input } from "@chakra-ui/input";
 import { Flex, Text } from "@chakra-ui/layout";
+import { FormHelperText } from "@chakra-ui/react";
 import { Select } from "@chakra-ui/select";
 import { AxiosError } from "axios";
 import { FormikErrors, useFormik } from "formik";
@@ -100,10 +101,11 @@ const Index = () => {
           onChange={handleChange}
           onBlur={handleBlur}
         />
-        <Text color="red" size="xs">
+        <FormHelperText color="red" size="xs">
           {touched.url && errors.url}
-        </Text>
+        </FormHelperText>
       </FormControl>
+
       <Flex gridGap={4} align="center">
         <FormControl>
           <FormLabel htmlFor="domain">Select Domain</FormLabel>
