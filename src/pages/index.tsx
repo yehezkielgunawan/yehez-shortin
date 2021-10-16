@@ -1,26 +1,47 @@
 import { Button } from "@chakra-ui/button";
 import { FormControl, FormLabel } from "@chakra-ui/form-control";
 import { Input } from "@chakra-ui/input";
-import { Flex, Text } from "@chakra-ui/layout";
-import { FormHelperText } from "@chakra-ui/react";
+import { Flex, Heading, Text } from "@chakra-ui/layout";
+import { FormHelperText, Skeleton, useDisclosure } from "@chakra-ui/react";
 import { Select } from "@chakra-ui/select";
 import { AxiosError } from "axios";
 import { FormikErrors, useFormik } from "formik";
 import React, { useState } from "react";
 
+import AppModal from "components/ui/AppModal";
 import { useAppToast } from "components/ui/AppToast";
 import ClipboardPopover from "components/ui/ClipboardPopover";
 import Main from "components/wrapper/Main";
 import { useDesktopWidthCheck } from "functions/helpers/desktopWidthChecker";
 import isValidURL from "functions/helpers/isValidURL";
 import { submitUrl } from "functions/lib/fetcher";
-import { LinkContent, LinkInput } from "functions/lib/types";
+import { LinkContent, LinkInput, LinkResponse } from "functions/lib/types";
 import { INITIAL_SUBMIT_LINK } from "types/submitForm";
 
 const Index = () => {
   const [urlRes, setUrlRes] = useState<string>("");
+  const [isFail, setIsFail] = useState<boolean>(false);
   const toast = useAppToast();
   const isDesktopWidth = useDesktopWidthCheck();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const modalHeader = <Heading as="h5">Shortener Result</Heading>;
+
+  const modalContent = !isFail ? (
+    <Skeleton isLoaded={urlRes.length > 0}>
+      <Flex justify="space-between" align="center">
+        <Text>
+          Your new link: <b>{urlRes}</b>
+        </Text>
+        <ClipboardPopover urlRes={urlRes} />
+      </Flex>
+    </Skeleton>
+  ) : (
+    <Text>
+      Failed to shorten the URL. Try another <b>alias</b> or <b>domain</b>.
+    </Text>
+  );
+
   const {
     values,
     errors,
@@ -53,12 +74,16 @@ const Index = () => {
             status: "success",
             title: "Link has shortened successfully!",
           });
-          setUrlRes(res.tiny_url);
+          setIsFail(false);
+          return setUrlRes(res.tiny_url);
         })
-        .catch((err: AxiosError) => {
-          toast({
-            status: "error",
-            title: err.message,
+        .catch((err: AxiosError<LinkResponse>) => {
+          setIsFail(true);
+          return err.response?.data.errors?.map((errorMessage) => {
+            return toast({
+              status: "error",
+              title: errorMessage,
+            });
           });
         });
     },
@@ -74,7 +99,15 @@ const Index = () => {
 
   const resetThisForm = () => {
     setUrlRes("");
+    setIsFail(false);
     resetForm();
+  };
+
+  const submitAndOpenModal = () => {
+    handleSubmit();
+    onOpen();
+    setIsFail(false);
+    setUrlRes("");
   };
 
   const isSubmitButtonDisabled =
@@ -131,7 +164,7 @@ const Index = () => {
         <Button
           w="100%"
           colorScheme="teal"
-          onClick={() => handleSubmit()}
+          onClick={() => submitAndOpenModal()}
           isDisabled={isSubmitButtonDisabled}
         >
           Submit
@@ -140,11 +173,16 @@ const Index = () => {
           Reset Form
         </Button>
       </Flex>
-      {urlRes?.length > 0 && (
-        <Text>
-          Your new link: <b>{urlRes}</b> <ClipboardPopover urlRes={urlRes} />
-        </Text>
-      )}
+
+      <AppModal
+        isOpen={isOpen}
+        size="md"
+        header={modalHeader}
+        withCloseButton={true}
+        body={modalContent}
+        onClose={onClose}
+        withFooter
+      />
     </Main>
   );
 };

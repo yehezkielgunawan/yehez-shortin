@@ -24,7 +24,7 @@ This is the first project that made using [Yehez Next Chakra Starter](https://ye
 ## Future Improvement
 
 - [X] Add Regex validation for the long url input
-- [ ] Modularize the related components if needed.
-- [ ] Use modal dialog as a confirmation and display the link result there.
-- [ ] Update error message toast.
+- [X] Modularize the related components if needed.
+- [X] Use modal dialog as a confirmation and display the link result there.
+- [X] Update error message in modal.
 - [ ] Implement unit testing based on [Next.Js Docs about testing](https://nextjs.org/docs/testing).
