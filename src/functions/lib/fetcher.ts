@@ -1,8 +1,9 @@
 import axios, { AxiosResponse } from "axios";
 
-import { API_KEY, BASE_URL } from "constants/config";
-
 import { LinkInput, LinkResponse } from "./types";
+
+import { API_KEY, BASE_URL } from "@/constants/config";
+
 
 export const submitUrl = async (
   url: string,

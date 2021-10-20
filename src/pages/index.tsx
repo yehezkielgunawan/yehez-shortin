@@ -8,15 +8,15 @@ import { AxiosError } from "axios";
 import { FormikErrors, useFormik } from "formik";
 import React, { useState } from "react";
 
-import AppModal from "components/ui/AppModal";
-import { useAppToast } from "components/ui/AppToast";
-import ClipboardPopover from "components/ui/ClipboardPopover";
-import Main from "components/wrapper/Main";
-import { useDesktopWidthCheck } from "functions/helpers/desktopWidthChecker";
-import isValidURL from "functions/helpers/isValidURL";
-import { submitUrl } from "functions/lib/fetcher";
-import { LinkContent, LinkInput, LinkResponse } from "functions/lib/types";
-import { INITIAL_SUBMIT_LINK } from "types/submitForm";
+import AppModal from "@/components/ui/AppModal";
+import { useAppToast } from "@/components/ui/AppToast";
+import ClipboardPopover from "@/components/ui/ClipboardPopover";
+import Main from "@/components/wrapper/Main";
+import { useDesktopWidthCheck } from "@/functions/helpers/desktopWidthChecker";
+import isValidURL from "@/functions/helpers/isValidURL";
+import { submitUrl } from "@/functions/lib/fetcher";
+import { LinkContent, LinkInput, LinkResponse } from "@/functions/lib/types";
+import { INITIAL_SUBMIT_LINK } from "@/types/submitForm";
 
 const Index = () => {
   const [urlRes, setUrlRes] = useState<string>("");
@@ -129,7 +129,7 @@ const Index = () => {
         <Input
           value={url}
           name="url"
-          id="name"
+          id="url"
           placeholder="url"
           onChange={handleChange}
           onBlur={handleBlur}

@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 
-import MotionStack from "components/motion/MotionStack";
-import { useDesktopWidthCheck } from "functions/helpers/desktopWidthChecker";
+import MotionStack from "@/components/motion/MotionStack";
+import { useDesktopWidthCheck } from "@/functions/helpers/desktopWidthChecker";
 
 type MainProps = {
   children: ReactNode;
