@@ -5,16 +5,16 @@ const defaultSEOConfig = {
   defaultTitle: "Yehez Shortin",
   description:
     "Yehezkiel Gunawan's personalized link shortener. (Made using tinyurl API)",
-  canonical: "https://link.yehezgun.com",
+  canonical: "https://shortin.yehezgun.com",
   openGraph: {
-    url: "https://link.yehezgun.com",
+    url: "https://shortin.yehezgun.com",
     title: "Yehez Shortin | Personalized Link Shortener",
     description:
       "Yehezkiel Gunawan's personalized link shortener. (Made using tinyurl API)",
     type: "website",
     images: [
       {
-        url: "https://yehez-og-image.yehezgun.com/**link**.yehezgun.com.png?theme=dark&md=1&fontSize=100px&images=https%3A%2F%2Fres.cloudinary.com%2Fyehez%2Fimage%2Fupload%2Fv1634043457%2Fyehez-avatar_u3q505.png&widths=300&heights=300",
+        url: "https://yehez-og-image.yehezgun.com/**link**.yehezgun.com.png?theme=dark&md=1&fontSize=100px&images=https%3A%2F%2Fres.cloudinary.com%2Fyehez%2Fimage%2Fupload%2Fv1636202181%2Fpeep_amkhuu.svg&widths=300&heights=300",
         alt: "link.yehezgun.com og-image",
         width: 800,
         height: 600,

@@ -4,7 +4,6 @@ import { LinkInput, LinkResponse } from "./types";
 
 import { API_KEY, BASE_URL } from "@/constants/config";
 
-
 export const submitUrl = async (
   url: string,
   domain: string,
@@ -24,7 +23,7 @@ export const submitUrl = async (
         },
       }
     )
-    .then((res) => {
+    .then((res: AxiosResponse<LinkResponse>) => {
       return res.data.data;
     });
 };
