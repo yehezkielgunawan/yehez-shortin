@@ -10,7 +10,7 @@ This is the first project that made using [Yehez Next Chakra Starter](https://ye
 ## How to use it?
 
 - It's basically like [Tinyurl](https://tinyurl.com) when you want to shorten a long url.
-- Open [Yehez-shortin](https://link.yehezgun.com).
+- Open [Yehez-shortin](https://shortin.yehezgun.com).
 - Input the long url that you want to make it short. You also can set the custom alias if you want.
 - Then click the submit button if you want to make it short. TADA....
 
