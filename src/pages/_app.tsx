@@ -8,6 +8,7 @@ import ComponentWrapper from "components/wrapper/ContainerWrapper";
 import defaultSEOConfig from "../../next-seo.config";
 import theme from "../theme";
 
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider resetCSS theme={theme}>
