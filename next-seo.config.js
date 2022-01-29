@@ -15,7 +15,7 @@ const defaultSEOConfig = {
     images: [
       {
         url: "https://yehez-og-image.yehezgun.com/**link**.yehezgun.com.png?theme=dark&md=1&fontSize=100px&images=https%3A%2F%2Fres.cloudinary.com%2Fyehez%2Fimage%2Fupload%2Fv1636202181%2Fpeep_amkhuu.svg&widths=300&heights=300",
-        alt: "link.yehezgun.com og-image",
+        alt: "shortin.yehezgun.com og-image",
         width: 800,
         height: 600,
       },
