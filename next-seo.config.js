@@ -14,7 +14,7 @@ const defaultSEOConfig = {
     type: "website",
     images: [
       {
-        url: "https://yehez-og-image.yehezgun.com/**shortin**.yehezgun.com.png?theme=dark&md=1&fontSize=100px&images=https%3A%2F%2Fres.cloudinary.com%2Fyehez%2Fimage%2Fupload%2Fv1636202181%2Fpeep_amkhuu.svg&widths=300&heights=300",
+        url: "https://og.yehezgun.com/api/base?description=A%20personalized%20link%20shortener%20by%20Yehezkiel%20Gunawan&logo=https%3A%2F%2Fimage.flaticon.com%2Ficons%2Fpng%2F512%2F1242%2F1242462.png&siteName=shortin.yehezgun.com&templateTitle=Shortin&theme=dark",
         alt: "shortin.yehezgun.com og-image",
         width: 800,
         height: 600,
