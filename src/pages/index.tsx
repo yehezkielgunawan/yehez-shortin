@@ -4,7 +4,6 @@ import { Input } from "@chakra-ui/input";
 import { Flex, Heading, Text } from "@chakra-ui/layout";
 import { FormHelperText, Skeleton, useDisclosure } from "@chakra-ui/react";
 import { Select } from "@chakra-ui/select";
-import { AxiosError } from "axios";
 import { FormikErrors, useFormik } from "formik";
 import React, { useState } from "react";
 
@@ -15,8 +14,12 @@ import Main from "@/components/wrapper/Main";
 import { useDesktopWidthCheck } from "@/functions/helpers/desktopWidthChecker";
 import isValidURL from "@/functions/helpers/isValidURL";
 import { submitUrl } from "@/functions/lib/fetcher";
-import { LinkContent, LinkInput, LinkResponse } from "@/functions/lib/types";
+import { LinkContent, LinkInput } from "@/functions/lib/types";
 import { INITIAL_SUBMIT_LINK } from "@/types/submitForm";
+
+export const config = {
+  runtime: "experimental-edge",
+};
 
 const Index = () => {
   const [urlRes, setUrlRes] = useState<string>("");
@@ -68,24 +71,27 @@ const Index = () => {
       return error;
     },
     onSubmit: async (formValues) => {
-      await submitUrl(formValues.url, formValues.domain, formValues.alias)
-        .then((res: LinkContent) => {
-          toast({
-            status: "success",
-            title: "Link has shortened successfully!",
-          });
-          setIsFail(false);
-          return setUrlRes(res.tiny_url);
-        })
-        .catch((err: AxiosError<LinkResponse>) => {
-          setIsFail(true);
-          return err.response?.data.errors?.map((errorMessage) => {
-            return toast({
-              status: "error",
-              title: errorMessage,
-            });
-          });
+      try {
+        const res: LinkContent = await submitUrl(
+          formValues.url,
+          formValues.domain,
+          formValues.alias
+        );
+        toast({
+          status: "success",
+          title: "Link has shortened successfully!",
         });
+        setIsFail(false);
+        setUrlRes(res.tiny_url);
+      } catch (err) {
+        setIsFail(true);
+        if (err instanceof Error) {
+          toast({
+            status: "error",
+            title: err.message,
+          });
+        }
+      }
     },
   });
 

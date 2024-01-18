@@ -1,6 +1,4 @@
-import axios, { AxiosResponse } from "axios";
-
-import { LinkInput, LinkResponse } from "./types";
+import { LinkResponse } from "./types";
 
 import { API_KEY, BASE_URL } from "@/constants/config";
 
@@ -9,21 +7,23 @@ export const submitUrl = async (
   domain: string,
   alias?: string
 ) => {
-  return await axios
-    .post<LinkInput, AxiosResponse<LinkResponse>>(
-      `${BASE_URL}create`,
-      {
-        url,
-        domain,
-        alias,
-      },
-      {
-        headers: {
-          Authorization: "Bearer " + API_KEY,
-        },
-      }
-    )
-    .then((res: AxiosResponse<LinkResponse>) => {
-      return res.data.data;
-    });
+  const response = await fetch(`${BASE_URL}create`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + API_KEY,
+    },
+    body: JSON.stringify({
+      url,
+      domain,
+      alias,
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  const data: LinkResponse = await response.json();
+  return data.data;
 };
